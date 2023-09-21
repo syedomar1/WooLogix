@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import { Server } from 'socket.io';
+import { Server as SocketServer } from 'socket.io';
 import http from 'http';
 
 import userRoutes from "./users/routes.js"
@@ -21,7 +21,7 @@ con.on('open',function(){
 
 
 //specify the port number
-const PORT = 3000;
+const PORT = 5000;
 
 //to parse json objects in our app
 app.use(bodyParser.json())
