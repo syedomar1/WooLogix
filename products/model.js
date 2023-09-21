@@ -8,7 +8,12 @@ const reviewSchema = new mongoose.Schema({
     ratings: {
         type: Number,
         required: true
+    },
+    userId: {
+        type: String,
+        required: true
     }
+
 });
 
 const productSchema = new mongoose.Schema({
@@ -37,7 +42,7 @@ const productSchema = new mongoose.Schema({
         required:true
     },
     reviewAndRatings: {
-        type: reviewSchema, 
+        type: [reviewSchema], 
         required: true
     }
 })

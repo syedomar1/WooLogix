@@ -8,11 +8,10 @@ import userRoutes from "./users/routes.js"
 import prodRoutes from "./products/routes.js"
 
 const app = express()
-const server = http.createServer(app);
-const io = new SocketServer(server);
+// const server = http.createServer(app);
+// const io = new SocketServer(server);
 
-mongoose.connect('mongodb://127.0.0.1:27017/SIHDB')
-
+mongoose.connect('mongodb://127.0.0.1:27017/RateDb')
 const con = mongoose.connection
 
 con.on('open',function(){
