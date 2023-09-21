@@ -1,6 +1,7 @@
 import productSchema from './model.js';
 import { v4 as uuidv4 } from 'uuid';
 import User from  '../users/model.js'
+import { sendNotification } from '../notification/controller.js';
 
 export const addProduct = async(req,res) => {
     const prodId = uuidv4()
@@ -55,12 +56,23 @@ export const buyProduct = async (req, res) => {
             return res.status(404).json({ message: 'Buyer not found' });
         }
 
-        // Ensure that the buyer has an 'ordersRec' property initialized as an array
-        if (!buyer.ordersRec) {
-            buyer.ordersRec = [];
+        // Fetch the product data based on prodId
+        const product = await productSchema.findOne({ prodId: prodId }).exec();
+
+        if (!product) {
+            // Handle the case when the product is not found
+            return res.status(404).json({ message: 'Product not found' });
         }
 
-        // Push the prodId to the 'ordersRec' array
+        // Fetch the seller data based on product's sellerId
+        const seller = await User.findOne({ userId: product.sellerId }).exec();
+
+        if (!seller) {
+            // Handle the case when the seller is not found
+            return res.status(404).json({ message: 'Seller not found' });
+        }
+
+        // Push the prodId to the 'ordersRec' array of the buyer
         buyer.ordersRec.push(prodId);
 
         // Save the updated buyer data
@@ -70,7 +82,11 @@ export const buyProduct = async (req, res) => {
             title: 'success',
             msg: prodId,
         };
+
         res.send(msg);
+
+        // Send a notification to the seller
+        sendNotification(seller.userId, `Order for Product: ${prodId}`);
     } catch (err) {
         console.error('Error:', err);
         res.status(500).json({ message: 'Internal Server Error' });
