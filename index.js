@@ -4,21 +4,14 @@ import mongoose from 'mongoose';
 import { Server as SocketServer } from 'socket.io';
 import http from 'http';
 
+
 import userRoutes from "./users/routes.js"
 import prodRoutes from "./products/routes.js"
 
 const app = express()
 // const server = http.createServer(app);
 // const io = new SocketServer(server);
-
-mongoose.connect('mongodb://127.0.0.1:27017/RateDb')
-const con = mongoose.connection
-
-con.on('open',function(){
-    console.log("Connected")
-})
-
-
+  
 //specify the port number
 const PORT = 5000;
 
