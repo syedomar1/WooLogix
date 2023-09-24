@@ -6,7 +6,7 @@ import { createInterface } from 'readline';
 
 //const MongoClient = require('mongodb').MongoClient;
 //const readline = require('readline');
-const app = express();
+/*const app = express();
 
 // Use body-parser middleware to parse JSON requests
 app.use(express.json());
@@ -20,7 +20,7 @@ app.listen(port, () => {
 const rl = createInterface({
   input: process.stdin,
   output: process.stdout
-}); // Replace with user input
+}); // Replace with user input*/
 
 
 app.post('/search', (req, res) => {

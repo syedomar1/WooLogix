@@ -1,5 +1,5 @@
-import express from 'express';
-import { shearing, scouring, sorting, combing, carding, dyeing, spinning} from './index2.js';
+/*import express from 'express';
+//import { shearing, scouring, sorting, combing, carding, dyeing, spinning} from './controller.js';
 
 const router = express.Router();
 
@@ -11,4 +11,4 @@ router.post('/carding', carding);
 router.post('/dyeing', dyeing);
 router.post('/spinning', spinning);
 
-export default router;
+export default router;*/

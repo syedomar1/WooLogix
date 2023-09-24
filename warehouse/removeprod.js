@@ -6,8 +6,8 @@ function initializeWarehouse() {
   const numSellers = parseInt(prompt("Enter the number of sellers:"));
 
   for (let i = 0; i < numSellers; i++) {
-    const sellerName = prompt("Enter the name of Seller ${i + 1}:");
-    const woolWeight = parseFloat(prompt("Enter the weight of wool for Seller ${i + 1} (in kg):"));
+    const sellerName = prompt(`Enter the name of Seller ${i + 1}:`);
+    const woolWeight = parseFloat(prompt(`Enter the weight of wool for Seller ${i + 1} (in kg):`));
 
     warehouse[sellerName] = woolWeight;
   }
@@ -16,7 +16,7 @@ function initializeWarehouse() {
 // Function to buy wool from a seller
 function buyWool() {
   const sellerName = prompt("Enter the seller's name you want to buy wool from:");
-  const amountToBuy = parseFloat(prompt("Enter the amount of wool to buy from ${sellerName} (in kg):"));
+  const amountToBuy = parseFloat(prompt(`Enter the amount of wool to buy from ${sellerName} (in kg):`));
 
   if (warehouse.hasOwnProperty(sellerName)) {
     const remainingWool = warehouse[sellerName] - amountToBuy;

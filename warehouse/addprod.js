@@ -7,7 +7,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-const sellerDataFile = ${os.homedir()}/seller_data.json; // Store seller data in the user's home directory
+const sellerDataFile = `${os.homedir()}/seller_data.json`; // Store seller data in the user's home directory
 
 let sellerNames = [];
 let woolWeights = [];
@@ -28,7 +28,7 @@ function updateSellerAndWoolWeight(sellerName, woolWeight, existingStorage) {
         if (totalWoolWeight + woolWeight <= totalCapacity) {
             // Add the current wool weight to the respective seller
             woolWeights[index] += woolWeight;
-            console.log(${sellerName}: ${woolWeights[index]} kg);
+            console.log(`${sellerName}: ${woolWeights[index]} kg`);
         } else {
             console.log("Warehouse full");
             warehouseFull = true; // Set the flag to indicate that the warehouse is full
@@ -39,7 +39,7 @@ function updateSellerAndWoolWeight(sellerName, woolWeight, existingStorage) {
             // Seller is new, add them to the arrays
             sellerNames.push(sellerName);
             woolWeights.push(woolWeight + existingStorage);
-            console.log(${sellerName}: ${woolWeights[woolWeights.length - 1]} kg);
+            console.log(`${sellerName}: ${woolWeights[woolWeights.length - 1]} kg`);
         } else {
             console.log("Warehouse full");
             warehouseFull = true; // Set the flag to indicate that the warehouse is full
@@ -50,7 +50,7 @@ function updateSellerAndWoolWeight(sellerName, woolWeight, existingStorage) {
 // Prompt the user to input the total capacity of the warehouse
 rl.question("Enter the total capacity of the warehouse (in kg): ", (totalCapacityInput) => {
     totalCapacity = parseFloat(totalCapacityInput); // Assign the input value to totalCapacity
-    console.log(Total capacity of the warehouse: ${totalCapacity} kg);
+    console.log(`Total capacity of the warehouse: ${totalCapacity} kg`);
     
     rl.question("Enter the name of the seller: ", (sellerName) => {
         rl.question("Enter the existing storage for this seller (in kg): ", (existingStorageInput) => {
@@ -73,6 +73,6 @@ rl.question("Enter the total capacity of the warehouse (in kg): ", (totalCapacit
                 console.log("Invalid input. Please enter a valid seller name and existing storage.");
                 rl.close(); // Close the interface after a single input
             }
-        });
-    });
+        });
+    });
 });
